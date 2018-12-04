@@ -1,6 +1,11 @@
 <template>
     <p class="page-container">404 page not found</p>
 </template>
+<script>
+export default {
+    
+}
+</script>
 
 <style lang="scss" scoped>
     .page-container {
@@ -8,4 +13,5 @@
         text-align: center;
         color: rgb(192, 204, 218);
     }
+
 </style>
