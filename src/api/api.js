@@ -21,3 +21,10 @@ export const addUser = params => { return axios.get(`${base}/user/add`, { params
 //  通知公告
 
 export const getMessageListPage = params => { return axios.get(`${base}/message/listpage`, { params: params }); };
+
+
+//   机构树维护
+
+
+export const deleteData = params => { return axios.get(`${base}/message/listpage`, { params: params }); };
+

@@ -16,9 +16,12 @@ import echarts from '../charts/echarts.vue'
 import Dbdata from '../nav4/dbdata.vue'
 import Ywdata from '../nav4/ywdata.vue'
 import Khdata from '../nav4/khdata.vue'
+import Dydata from '../nav5/dydata.vue'
+import Dkdata from '../nav5/dkdata.vue'
 import Orglist from '../system/orglist.vue'
 import Ygdata from '../system/ygdata.vue'
 import Jsdata from '../system/jsdata.vue'
+import Upload from '../upload/upload.vue'
 
 Vue.use(VueRouter)
 
@@ -45,17 +48,7 @@ let routes = [
             { path: '/echarts', component: echarts, name: '报表' }
         ]
     },
-    {
-        path: '/',
-        component: Home,
-        name: '通知公告',
-        iconCls: 'fa fa-address-card',
-        leaf: false,//只有一个节点
-        children: [
-            { path: '/page6', component: Page6, name: '公告信息维护' },
-            { path: '/page7', component: Page7, name: '公告信息阅读' }
-        ]
-    },
+    
     {
         path: '/',
         component: Home,
@@ -66,6 +59,27 @@ let routes = [
             { path: '/khdata', component: Khdata, name: '客户信息查询' },
             { path: '/ywdata', component: Ywdata, name: '业务信息查询' },
             { path: '/dbdata', component: Dbdata, name: '担保信息查询' }
+        ]
+    },
+    {
+        path: '/',
+        component: Home,
+        name: '业务数据补录 ',
+        iconCls: 'fa fa-address-card',
+        leaf: false,//只有一个节点
+        children: [
+            { path: '/dydata', component: Dydata, name: '抵质押人信息补录' },
+            { path: '/dkdata', component: Dkdata, name: '垫款原业务号补录' }
+        ]
+    },
+    {
+        path: '/',
+        component: Home,
+        name: '文件上传 ',
+        iconCls: 'el-icon-upload2',
+        leaf: false,//只有一个节点
+        children: [
+            { path: '/upload', component: Upload, name: '文件上传' }
         ]
     },
     {

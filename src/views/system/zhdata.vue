@@ -1,36 +1,40 @@
 <template>
-<el-container>
-<el-aside width='50%'>
 	<section>
 		<!--工具条-->
 		<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
 			<el-form :inline="true" :model="filters">
-				<el-form-item label="角色名称: " prop="card_id">
-					<el-input v-model="filters.name" placeholder="角色名称"></el-input>
+				<el-form-item>
+					<el-input v-model="filters.name" placeholder="姓名"></el-input>
 				</el-form-item>
 				<el-form-item>
 					<el-button type="primary" v-on:click="getUsers">查询</el-button>
-					<!-- <el-button type="primary" @click="onClear">清空</el-button> -->
-					<!-- <el-button type="primary" @click="sendMessage">发送短信</el-button>
-					<el-button type="primary" @click="addGroup">加入群组</el-button> -->
+				</el-form-item>
+				<el-form-item>
+					<el-button type="primary" @click="handleAdd">新增</el-button>
 				</el-form-item>
 			</el-form>
 		</el-col>
+
 		<!--列表-->
-		<el-table :data="ss" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
+		<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
 			<el-table-column type="selection" width="55">
 			</el-table-column>
 			<el-table-column type="index" width="60">
 			</el-table-column>
-			<el-table-column prop="ywid" label="编号" style="width: 10%;"  sortable>
+			<el-table-column prop="name" label="姓名" width="120" sortable>
 			</el-table-column>
-			<el-table-column prop="name" label="角色名称" style="width: 10%;" sortable>
+			<el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
 			</el-table-column>
-			<el-table-column prop="state" label="类别" style="width: 10%;" sortable>
+			<el-table-column prop="age" label="年龄" width="100" sortable>
 			</el-table-column>
+			<el-table-column prop="birth" label="生日" width="120" sortable>
+			</el-table-column>
+			<!-- <el-table-column prop="addr" label="地址" min-width="180" sortable>
+			</el-table-column> -->
 			<el-table-column label="操作" width="150">
 				<template scope="scope">
-					<el-button size="small" @click="handleEdit(scope.$index, scope.row)" type='primary'>编辑</el-button>
+					<!-- <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button> -->
+					<el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
 				</template>
 			</el-table-column>
 		</el-table>
@@ -38,7 +42,7 @@
 		<!--工具条-->
 		<el-col :span="24" class="toolbar">
 			<el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>
-			<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
+			<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="5" :total="total" style="float:right;">
 			</el-pagination>
 		</el-col>
 
@@ -98,59 +102,20 @@
 			</div>
 		</el-dialog>
 	</section>
-	</el-aside>
-	<el-main>
-		 <el-tabs  v-model="activename"  @tab-click="handleClick" >
-			<el-tab-pane label="功能权限" name="first"  >
-				<roletree ></roletree>
-			</el-tab-pane>
-			<el-tab-pane label="权限分配" name="second"  >
-				<userlist ></userlist>
-			</el-tab-pane>
-		 </el-tabs>	
-	</el-main></el-container>
 </template>
 
 <script>
 	import util from '../../common/js/util'
 	//import NProgress from 'nprogress'
 	import { getUserListPage, removeUser, batchRemoveUser, editUser, addUser } from '../../api/api';
-	import roletree from './roletree.vue'
-	import userlist from './zhdata.vue'
+
 	export default {
 		data() {
 			return {
-				activename:'first',
-				show_true:true ,
 				filters: {
 					name: ''
 				},
-				ss: [
-					{
-					  id:'1' ,
-					  ywid:'sysadmin',
-					  name:'系统管理员',
-					  state:'正常',
-					  date:'2018-10-22',
-					  xx:'*******'	
-					},
-					{
-					 id:'2' ,
-					  ywid:'orgadmin',
-					  name:'机构管理员',
-					  state:'正常',
-					  date:'2018-10-22',
-					  xx:'*******'	
-					},
-					{
-					  id:'3' ,
-					  ywid:'repadmin',
-					  name:'报文管理员',
-					  state:'正常',
-					  date:'2018-10-22',
-					  xx:'*******'
-					}
-				],
+				users: [],
 				total: 0,
 				page: 1,
 				listLoading: false,
@@ -192,14 +157,6 @@
 			}
 		},
 		methods: {
-			handleClick(tab, event) {
-				if(tab.name == 'first'){
-					this.show_true = true ;
-				}else{
-					this.show_true = false ;
-				}	
-			//	console.log(tab, event);	
-			},
 			//性别显示转换
 			formatSex: function (row, column) {
 				return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
@@ -332,41 +289,10 @@
 				}).catch(() => {
 
 				});
-			},
-			 // 清空
-			onClear() {
-				this.changeValide([])
-				this.queryForm = Object.assign({}, this.queryMsg)
-				this.requestData()
-			},
-			  // 请求数据
-    		requestData() {
-			this.loading = true
-			new Promise((resolve, reject) => {
-				getMyCustomerList(this.queryForm)
-				.then(response => {
-					resolve(response)
-				})
-				.catch(error => {
-					this.loading = false
-					reject(error)
-				})
-			}).then(res => {
-				if (res.status == 200) {
-				this.tableData = res.data
-				this.loading = false
-				}
-			})
 			}
 		},
 		mounted() {
-		//	this.getUsers();
-		},
-		components:{
-			roletree ,userlist
-		},
-		created:{
-		//	handleClick
+			this.getUsers();
 		}
 	}
 

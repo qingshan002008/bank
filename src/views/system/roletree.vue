@@ -1,63 +1,9 @@
 <template>
   <div id="tree" >
-    <el-container>
-     <el-aside width="300px"  >
-       <el-scrollbar style="height:100%" wrapClass="scrollbar-class"  class="treeData" >
           <el-tree :data="treeData" :props="defaultProps" :expand-on-click-node="false"
-          @node-click="onclikeTreeNode" ref='tree'
+           ref='tree'  show-checkbox node-key='id' :default-checked-keys="[1,10]"
                ></el-tree> 
-        </el-scrollbar>  
-      </el-aside>
-      <el-main ref="main">
-       <div class="queryContent">
-          <div class="queryOperate">
-             <el-button type="primary" @click='deleteData'>删除</el-button>
-            <el-button type="primary" @click="addData">增加下级机构</el-button> 
-          </div>
-          <div class="queryTable">
-              <el-table  :data="tableData" style="width: 100%"  >
-              <el-table-column type="selection" >
-              </el-table-column>
-              <el-table-column prop="orgid" label="ID" ></el-table-column>
-              <el-table-column prop="orgname" label="机构名称" ></el-table-column>
-              <el-table-column prop="orgcode" label="机构编号"></el-table-column>
-              <el-table-column prop="orglevl" label="机构等级" ></el-table-column>
-              <el-table-column prop="orgphone" label="机构电话" ></el-table-column>
-              <el-table-column prop="orgaddr" label="机构地址" ></el-table-column>
-              <el-table-column prop="orgpar" label="父机构编号"></el-table-column>
-              
-            </el-table> 
-          </div>
-        </div>
-      </el-main>   
-      <!--新增界面-->
-		<el-dialog title="新增" :visible.sync="addFormVisible" :close-on-click-modal="false">
-			<el-form :model="addForm" label-width="80px" :rules="addFormRules"  :inline="true" ref="addForm">
-				<el-form-item label="机构名称" prop="name">
-					<el-input v-model="addForm.orgname" style="width:200px"  ></el-input>
-				</el-form-item>
-        <el-form-item label="机构编码" >
-					<el-input v-model="addForm.orgcode" style="width:200px"  ></el-input>
-				</el-form-item>
-				<el-form-item label="机构等级">
-						<el-input v-model="addForm.orglevl" style="width:200px"  ></el-input>
-				</el-form-item>
-				<el-form-item label="机构电话">
-					<el-input v-model="addForm.orgphone" style="width:200px"></el-input>
-				</el-form-item>
-				<el-form-item label="父机构编">
-					<el-input v-model="addForm.orgpar" style="width:460px"></el-input>
-				</el-form-item>
-				<el-form-item label="机构地址">
-					<el-input type="textarea" v-model="addForm.orgaddr" style="width:460px"></el-input>
-				</el-form-item>
-			</el-form>
-			<div slot="footer" class="dialog-footer">
-				<el-button @click.native="addFormVisible = false">取消</el-button>
-				<el-button type="primary" @click.native="addSubmit" :loading="Loading">提交</el-button>
-			</div>
-		</el-dialog>
-     </el-container>
+          <el-button type='primary'>保存</el-button>
   </div>
 </template>
 <script>
@@ -70,38 +16,35 @@ export default {
       treeData: [
         {
           id: 1,
-          name: '全省汇总',
-          children: [{
+          name: '报表',
+        },
+        { 
           id: 4,
-          name: '济南市',
+          name: '采集数据查询',
           children: [{
               id: 9,
-              name: '山东济南历城区***'
+              name: '客户信息查询'
               }, {
               id: 10,
-              name: '山东济南历城区***'
-              }]
-          } , {
-          id: 2,
-          name: '青岛市',
-          children: [{
-              id: 5,
-              name: '青岛市****区'
-              }, {
-              id: 6,
-              name: '青岛市****区'
+              name: '业务信息查询'
               },
               {
-              id: 6,
-              name: '青岛市****区'
-              },
-              {
-              id: 6,
-              name: '青岛市****区'
+              id: 14,
+              name: '担保信息查询'
               }
-          ]
-          }]
-          }
+              ]
+          } ,{ 
+          id: 5,
+          name: '业务数据补录',
+          children: [{
+              id: 12,
+              name: '抵质押人信息补录'
+              }, {
+              id: 11,
+              name: '垫款原业务号补录'
+              }
+              ]
+          } 
       ],
       defaultProps: {
         children: 'children',
