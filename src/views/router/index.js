@@ -22,6 +22,11 @@ import Orglist from '../system/orglist.vue'
 import Ygdata from '../system/ygdata.vue'
 import Jsdata from '../system/jsdata.vue'
 import Upload from '../upload/upload.vue'
+import BasicInfo from '../pledgeInfo/basicInfo.vue'
+import CollateralInfo from '../pledgeInfo/collateralInfo.vue'
+import ContractMark from '../pledgeInfo/contractMark.vue'
+import MatterInfo from '../pledgeInfo/matterInfo.vue'
+import OtherDebt from '../pledgeInfo/otherDebt.vue'
 
 Vue.use(VueRouter)
 
@@ -47,8 +52,31 @@ let routes = [
         children: [
             { path: '/echarts', component: echarts, name: '报表' }
         ]
+    },{
+        path: '/',
+        component: Home,
+        name: '通知消息',
+        iconCls: 'fa fa-address-card',
+        leaf: false,//只有一个节点
+        children: [
+            { path: '/page6', component: Page6, name: '通知信息维护' },
+            { path: '/page7', component: Page7, name: '通知信息查询' }
+        ]
     },
-    
+    {
+        path: '/',
+        component: Home,
+        name: '抵质押合同信息记录',
+        iconCls: 'fa fa-address-card',
+        leaf: false,//只有一个节点
+        children: [
+            { path: '/contractMark', component: ContractMark, name: '基础信息' },
+            { path: '/basicInfo', component: BasicInfo, name: '基本信息' },
+            { path: '/otherDebt', component: OtherDebt, name: '其他债务人信息' },
+            { path: '/collateralInfo', component: CollateralInfo, name: '抵押物信息' },
+            { path: '/matterInfo', component: MatterInfo, name: '质押信息' }
+        ]
+    },
     {
         path: '/',
         component: Home,

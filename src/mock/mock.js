@@ -2,9 +2,19 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { LoginUsers, Users } from './data/user';
 import { Message } from './data/message';
+import {Contracts} from './data/contracts'
+import {BasicInfos} from './data/basicInfos'
+import {CollateralInfos} from './data/collateralInfos'
+
 let _Users = Users;
 
-let _Message = Message
+let _Message = Message;
+
+let _Contracts = Contracts ;
+
+let _BasicInfos = BasicInfos;
+
+let _CollateralInfos = CollateralInfos;
 
 export default {
   /**
@@ -175,5 +185,63 @@ mock.onGet('/message/listpage').reply(config => {
 
 
 //通知公告结束
+// 抵质押合同基础段信息查询开始
+mock.onGet('/pledgeInfo/contractList').reply(config => {
+  let {page, name} = config.params;
+  let mockContracts = _Contracts.filter(contracts => {
+    if (name && contracts.name.indexOf(name) == -1) return false;
+    return true;
+  });
+  let total = mockContracts.length;
+  mockContracts = mockContracts.filter((c, index) => index < 10 * page && index >= 10 * (page - 1));
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([200, {
+        total: total,
+        contracts: mockContracts
+      }]);
+    }, 1000);
+  });
+});
+mock.onGet('/pledgeInfo/basicInfoList').reply(config => {
+  let {page, startDate,endDate} = config.params;
+  let mockBasicInfos = _BasicInfos.filter(basicInfos => {
+    if (startDate && basicInfos.startDate < startDate  ) {
+      return false;
+    }
+    if (endDate && basicInfos.endDate > endDate  ) {
+      return false;
+    } 
+      return true;
+  });
+  let total = mockBasicInfos.length;
+  mockBasicInfos = mockBasicInfos.filter((c, index) => index < 10 * page && index >= 10 * (page - 1));
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([200, {
+        total: total,
+        basicInfos: mockBasicInfos
+      }]);
+    }, 1000);
+  });
+});
+mock.onGet('/pledgeInfo/collateralList').reply(config => {
+  let {page, name} = config.params;
+  let mockCollateralInfos = _CollateralInfos.filter(collateralInfo => {
+    if (name && collateralInfo.name.indexOf(name) == -1) return false;
+    return true;
+  });
+  let total = mockCollateralInfos.length;
+  mockCollateralInfos = mockCollateralInfos.filter((c, index) => index < 10 * page && index >= 10 * (page - 1));
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([200, {
+        total: total,
+        collateralInfos: mockCollateralInfos
+      }]);
+    }, 1000);
+  });
+});
+//抵质押合同基础段信息查询结束
   }
 };
