@@ -44,6 +44,8 @@
   <el-table :data="collateralInfos" highlight-current-row v-loading="listLoading"  style="width: 100%;"  stripe='true'>
       <!-- <el-table-column type="selection" width="55">
 			</el-table-column> -->
+      <el-table-column  type="index"  :index="indexMethod" label="序号"     width="50">
+      </el-table-column>
       <el-table-column prop="collateralCount" label="抵押物个数" width="100">
 			</el-table-column>
 			<el-table-column prop="contractNo" label="合同标示码" width="120" sortable>
@@ -136,6 +138,9 @@ export default {
 			},
       resetForm(formName) {
         this.$refs[formName].resetFields();
+      },
+      indexMethod(index){
+          return index + (this.page-1) * 10 + 1 ;
       }
     },
     mounted() {

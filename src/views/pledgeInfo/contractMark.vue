@@ -54,7 +54,7 @@
 			</el-table-column>
 			<el-table-column prop="infoType" label="身份类型" width="120" sortable>
 			</el-table-column>
-			<el-table-column prop="name" label="债务人名称" min-width="180" sortable>
+			<el-table-column prop="name" label="债务人名称" min-width="120" sortable>
 			</el-table-column>
       <el-table-column prop="cardType" label="证件类型" min-width="100" sortable>
 			</el-table-column>
