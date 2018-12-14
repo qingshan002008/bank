@@ -108,7 +108,7 @@ let routes = [
         children: [
             { path: '/creditBasic', component: CreditBasic, name: '基础信息' },
             { path: '/allCredit', component: AllCredit, name: '共同授信人信息' },
-            { path: '/otherRepayment', component: OtherRepayment, name: '额度信息' }
+            { path: '/otherRepayment', component: OtherRepayment, name: '额度信息查询' }
         ]
     },
     {
