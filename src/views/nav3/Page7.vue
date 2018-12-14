@@ -58,11 +58,11 @@
 					<el-input-number v-model="editForm.age" :min="0" :max="200"></el-input-number>
 				</el-form-item> -->
 				<el-form-item label="公告内容">
-					<el-input type="textarea"    value = '为贯彻落实党的十九大精神和第五次全国金融工作会议精神，加强个人信息保护，做好新时代征信信息安全管理工作，切实保护信息主体合法权益，提升人民群众在征信领域的幸福感和安全感，依据《征信业管理条例》、《个人信用信息基础数据库管理暂行办法》（中国人民银行令〔2005〕第3号发布）等法规规章的相关规定，现就进一步加强金融信用信息基础数据库运行机构和接入机构（以下简称运行机构和接入机构）征信信息安全管理有关事项通知如下：'>
+					<el-input type="textarea"  :rows="6"  value = '为贯彻落实党的十九大精神和第五次全国金融工作会议精神，加强个人信息保护，做好新时代征信信息安全管理工作，切实保护信息主体合法权益，提升人民群众在征信领域的幸福感和安全感，依据《征信业管理条例》、《个人信用信息基础数据库管理暂行办法》（中国人民银行令〔2005〕第3号发布）等法规规章的相关规定，现就进一步加强金融信用信息基础数据库运行机构和接入机构（以下简称运行机构和接入机构）征信信息安全管理有关事项通知如下：'>
 					</el-input>
 				</el-form-item>
 				<el-form-item label="日期">
-					<el-date-picker type="date" placeholder="选择日期" v-model="editForm.birth">2018-10-30</el-date-picker>
+					<el-date-picker type="date"  placeholder="选择日期" v-model="currentd">2018-10-30</el-date-picker>
 				</el-form-item>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
@@ -113,6 +113,7 @@
 				message: {
 					name: ''
 				},
+				currentd:'2018-05-12',
 				messages: [],
 				total: 0,
 				page: 1,

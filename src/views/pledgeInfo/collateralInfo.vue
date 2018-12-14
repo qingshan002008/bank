@@ -93,15 +93,15 @@ export default {
         },
         options:[
           {
-            value:'1',
+            value:'身份证',
             label:'身份证'
           },
            {
-            value:'2',
+            value:'户口本',
             label:'户口本'
           },
            {
-            value:'3',
+            value:'警官证',
             label:'警官证'
           }
           

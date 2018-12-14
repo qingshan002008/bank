@@ -1,13 +1,14 @@
 const Contracts = [
     {
       type: '510-抵质押信息',
+      type1: '420-企业授信协议信息',
       contractNo: '0531-44444444',
       infoDate:'2018-10-20',
       isornotDone: '合同生效',
       infoType: '自然人',
       name: '宋学习',
       cardType:'身份证',
-      cardNo:'370113199405172001',
+      cardNo:'3700000000000001',
       orgName:'济南农商行',
       collateral:'房产',
       collateralNo:'2356894',
@@ -18,13 +19,14 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
         infoType: '自然人',
         name: '王自然',
         cardType:'身份证',
-        cardNo:'370113199405172001',
+        cardNo:'3700000000000002',
         orgName:'烟台农商行',
         collateral:'机械设备',
         collateralNo:'2356894',
@@ -35,13 +37,14 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
         infoType: '自然人',
         name: '王三',
-        cardType:'身份证',
-        cardNo:'370113199405172001',
+        cardType:'户口本',
+        cardNo:'3700000000000003',
         orgName:'烟台农商行',
         collateral:'土地使用权',
         collateralNo:'2356894',
@@ -52,13 +55,14 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
         infoType: '自然人',
         name: '刘长生',
-        cardType:'身份证',
-        cardNo:'370113199405172001',
+        cardType:'户口本',
+        cardNo:'3700000000000004',
         orgName:'烟台农商行',
         collateral:'其他',
         collateralNo:'2356894',
@@ -69,13 +73,14 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
         infoType: '自然人',
         name: '刘长',
         cardType:'身份证',
-        cardNo:'370113199405172001',
+        cardNo:'3700000000000005',
         orgName:'烟台农商行',
         collateral:'房产',
         collateralNo:'2356894',
@@ -86,6 +91,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
@@ -103,6 +109,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
@@ -120,6 +127,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
@@ -137,6 +145,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
@@ -154,6 +163,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
@@ -171,6 +181,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
@@ -188,6 +199,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
@@ -205,6 +217,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
@@ -222,6 +235,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
@@ -239,6 +253,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
@@ -256,6 +271,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',
@@ -273,6 +289,7 @@ const Contracts = [
     },
     {
         type: '510-抵质押信息',
+        type1: '420-企业授信协议信息',
         contractNo: '0531-44444444',
         infoDate:'2018-10-20',
         isornotDone: '合同失效',

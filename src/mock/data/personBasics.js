@@ -1,5 +1,8 @@
-const CollateralInfos = [
+const PersonBasics = [
     {
+      type:'G1融资担保账户',
+      isornotDone:'新开户首次上报',
+      orgName:'济南农商行',
       collateralCount: '2',
       contractNo: '0531-44444444',
       collateralType:'机械设备',
@@ -11,17 +14,17 @@ const CollateralInfos = [
       infoDate:'2018-10-20',
       infoType: '自然人',
       name: '宋学习',
-      cardType:'身份证',
-      cardNo:'3701000000000001',
+      cardType:'户口本',
+      cardNo:'370113199405172001',
       desc:'抵押说明**********',
 
       matterType:'股票',
       moneyAll:'100000.00',
-
-      repaytype:'共同债务人',
-
     },
     {
+        type:'G2非融资担保账户',
+        isornotDone:'在保责任变化',
+        orgName:'烟台农商行',
         collateralCount: '1',
         contractNo: '0531-44444444',
         collateralType:'房产',
@@ -33,15 +36,17 @@ const CollateralInfos = [
         infoDate:'2017-10-20',
         infoType: '自然人',
         name: '陈冠',
-        cardType:'户口本',
-        cardNo:'3701000000000002',
+        cardType:'身份证',
+        cardNo:'370113199405172002',
         desc:'抵押说明**********',
   
         matterType:'贵金属',
         moneyAll:'200000.00',
-        repaytype:'共同债务人',
     },
     {
+        type:'G1融资担保账户',
+        isornotDone:'五级分类调整',
+        orgName:'烟台农商行',
         collateralCount: '2',
         contractNo: '0531-44444444',
         collateralType:'机械设备',
@@ -53,16 +58,18 @@ const CollateralInfos = [
         infoDate:'2018-10-20',
         infoType: '自然人',
         name: '陈旺',
-        cardType:'户口本',
-        cardNo:'3701000000000003',
+        cardType:'警官证',
+        cardNo:'370113199405172011',
         desc:'抵押说明**********',
   
         matterType:'股票',
         moneyAll:'100000.00',
-        repaytype:'共同债务人',
     },
     {
-          collateralCount: '1',
+        type:'G1融资担保账户',
+        isornotDone:'五级分类调整',
+        orgName:'青岛农商行',
+        collateralCount: '1',
           contractNo: '0531-44444444',
           collateralType:'房产',
           collateral:'房产权证号',
@@ -73,16 +80,18 @@ const CollateralInfos = [
           infoDate:'2017-10-20',
           infoType: '自然人',
           name: '王子',
-          cardType:'身份证',
-          cardNo:'3701000000000004',
+          cardType:'警官证',
+          cardNo:'370113199405172021',
           desc:'抵押说明**********',
     
           matterType:'贵金属',
           moneyAll:'200000.00',
-          repaytype:'共同债务人',
     },
     {
-            collateralCount: '2',
+        type:'G1融资担保账户',
+        isornotDone:'五级分类调整',
+        orgName:'青岛农商行',
+        collateralCount: '2',
             contractNo: '0531-44444444',
             collateralType:'机械设备',
             collateral:'机械设备号',
@@ -93,15 +102,17 @@ const CollateralInfos = [
             infoDate:'2018-10-20',
             infoType: '自然人',
             name: '王子强',
-            cardType:'户口本',
-            cardNo:'370113199405172001',
+            cardType:'警官证',
+            cardNo:'370113199405172031',
             desc:'抵押说明**********',
       
             matterType:'股票',
             moneyAll:'100000.00',
-            repaytype:'共同债务人',
     },
     {
+        type:'G1融资担保账户',
+        isornotDone:'五级分类调整',
+        orgName:'青岛农商行',
         collateralCount: '1',
         contractNo: '0531-44444444',
         collateralType:'房产',
@@ -119,9 +130,11 @@ const CollateralInfos = [
   
         matterType:'贵金属',
         moneyAll:'200000.00',
-        repaytype:'共同债务人',
     },      
     {
+        type:'G1融资担保账户',
+        isornotDone:'五级分类调整',
+        orgName:'青岛农商行',
         collateralCount: '1',
         contractNo: '0531-44444444',
         collateralType:'房产',
@@ -139,9 +152,11 @@ const CollateralInfos = [
   
         matterType:'贵金属',
         moneyAll:'200000.00',
-        repaytype:'共同债务人',
     },       
     {
+        type:'G1融资担保账户',
+        isornotDone:'五级分类调整',
+        orgName:'青岛农商行',
         collateralCount: '2',
         contractNo: '0531-44444444',
         collateralType:'机械设备',
@@ -156,12 +171,14 @@ const CollateralInfos = [
         cardType:'身份证',
         cardNo:'370113199405172001',
         desc:'抵押说明**********',
-        repaytype:'共同债务人',
   
         matterType:'股票',
         moneyAll:'100000.00',
     },         
     {
+        type:'G1融资担保账户',
+        isornotDone:'五级分类调整',
+        orgName:'青岛农商行',
         collateralCount: '1',
         contractNo: '0531-44444444',
         collateralType:'房产',
@@ -173,15 +190,17 @@ const CollateralInfos = [
         infoDate:'2017-10-20',
         infoType: '自然人',
         name: '赵倩',
-        cardType:'户口本',
+        cardType:'身份证',
         cardNo:'370113199405172001',
         desc:'抵押说明**********',
   
         matterType:'贵金属',
         moneyAll:'200000.00',
-        repaytype:'共同债务人', 
     }, 
     {
+        type:'G1融资担保账户',
+        isornotDone:'五级分类调整',
+        orgName:'青岛农商行',
         collateralCount: '2',
         contractNo: '0531-44444444',
         collateralType:'机械设备',
@@ -201,7 +220,10 @@ const CollateralInfos = [
         moneyAll:'100000.00',
       },
       {
-          collateralCount: '1',
+        type:'G1融资担保账户',
+        isornotDone:'五级分类调整',
+        orgName:'青岛农商行',  
+        collateralCount: '1',
           contractNo: '0531-44444444',
           collateralType:'房产',
           collateral:'房产权证号',
@@ -220,6 +242,9 @@ const CollateralInfos = [
           moneyAll:'200000.00',
         },
         {
+            type:'G1融资担保账户',
+            isornotDone:'五级分类调整',
+            orgName:'青岛农商行',
             collateralCount: '2',
             contractNo: '0531-44444444',
             collateralType:'机械设备',
@@ -239,6 +264,9 @@ const CollateralInfos = [
             moneyAll:'100000.00',
           },                
           {
+            type:'G1融资担保账户',
+            isornotDone:'账户关闭',
+            orgName:'济南农商行',
             collateralCount: '1',
             contractNo: '0531-44444444',
             collateralType:'房产',
@@ -258,7 +286,10 @@ const CollateralInfos = [
             moneyAll:'200000.00',
           },
           {
-              collateralCount: '2',
+            type:'G1融资担保账户',
+            isornotDone:'账户关闭',
+            orgName:'济南农商行',  
+            collateralCount: '2',
               contractNo: '0531-44444444',
               collateralType:'机械设备',
               collateral:'机械设备号',
@@ -277,6 +308,9 @@ const CollateralInfos = [
               moneyAll:'100000.00',
             },            
             {
+                type:'G1融资担保账户',
+                isornotDone:'账户关闭',
+                orgName:'济南农商行',
                 collateralCount: '1',
                 contractNo: '0531-44444444',
                 collateralType:'房产',
@@ -296,4 +330,4 @@ const CollateralInfos = [
                 moneyAll:'200000.00',
               }                            
   ];
-  export { CollateralInfos };
+  export { PersonBasics };

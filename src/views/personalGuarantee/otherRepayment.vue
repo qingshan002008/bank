@@ -1,18 +1,18 @@
 <template>
-      <!-- 质物基本信息  -->
+      <!-- 其他还款人基本信息  -->
   <section>
     	<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-        <el-form ref="collateralInfoForm" :model="filters" :inline="true"   >
+        <el-form ref="contractForm" :model="filters" :inline="true"   >
           <table >
             <tr>
               <td>
-                <el-form-item label="出质人名称"  prop='name'>
-					        <el-input v-model="filters.name" placeholder="出质人名称"></el-input>
+                <el-form-item label="责任人名称"  prop='name'>
+					        <el-input v-model="filters.name" placeholder="责任人名称"></el-input>
 				        </el-form-item>
               </td>
                 <td>
-                <el-form-item label="出质人身份类型" prop='cardType'>
-                    <el-select v-model="filters.cardType" placeholder="出质人身份类型">
+                <el-form-item label="责任人身份类型" prop='cardType'>
+                    <el-select v-model="filters.cardType" placeholder="责任人身份类型">
                     <el-option
                       v-for="item in options"
                       :key="item.value"
@@ -23,44 +23,42 @@
                   </el-form-item>
               </td>
               <td>
-                <el-form-item label="出质人身份标示号码" prop='cardNo'>
-                    <el-input v-model="filters.cardNo" placeholder="出质人身份标示号码"></el-input>
+                <el-form-item label="责任人身份标示号码" prop='cardNo'>
+                    <el-input v-model="filters.cardNo" placeholder="债责任人身份标示号码"></el-input>
                   </el-form-item>
               </td>
             </tr>
             <tr >
               <td colspan="3" style="text-align:center;">
                 <el-form-item>
-					        <el-button type="primary" v-on:click="getCollateralInfos">查询</el-button>
+					        <el-button type="primary" v-on:click="getOtherRepays">查询</el-button>
               </el-form-item>
               <el-form-item>
-					        <el-button type="primary" @click="resetForm('collateralInfoForm')">重置</el-button>
+					        <el-button type="primary" @click="resetForm('contractForm')">重置</el-button>
 				      </el-form-item>
               </td>
             </tr>
           </table>
         </el-form>
     	</el-col>
-  <el-table :data="collateralInfos" highlight-current-row v-loading="listLoading"  style="width: 100%;"  stripe='true'>
+  <el-table :data="contractMarks" highlight-current-row v-loading="listLoading"  style="width: 100%;"  stripe='true'>
       <!-- <el-table-column type="selection" width="55">
 			</el-table-column> -->
-      <el-table-column prop="collateralCount" label="质物个数" width="100" align="center">
+      <el-table-column prop="collateralCount" label="责任人个数" width="120"  sortable>
 			</el-table-column>
-			<el-table-column prop="contractNo" label="合同标示码" width="120" sortable>
+      <el-table-column prop="infoType" label="身份类型" width="120" sortable>
 			</el-table-column>
-      <el-table-column prop="matterType" label="质物类型" width="120" sortable>
-			</el-table-column>
-      <el-table-column prop="moneyAll" label="质物估值" width="100" sortable>
-			</el-table-column>
-			<el-table-column prop="infoType" label="身份类型" width="120" sortable>
-			</el-table-column>
-			<el-table-column prop="name" label="质物人名称" min-width="100" sortable>
+      <el-table-column prop="name" label="债务人名称" min-width="100" sortable>
 			</el-table-column>
       <el-table-column prop="cardType" label="证件类型" min-width="100" sortable>
 			</el-table-column>
       <el-table-column prop="cardNo" label="证件号码" min-width="100" sortable>
 			</el-table-column>
-      <el-table-column prop="isornotDone" label="说明" width="100" sortable>
+      <el-table-column prop="repaytype" label="责任人类型" width="120">
+			</el-table-column>
+			<el-table-column prop="moneyAll" label="金额" width="120" sortable>
+			</el-table-column>
+			<el-table-column prop="contractNo" label="合同编号" width="120"  sortable>
 			</el-table-column>
   </el-table>
   <!--工具条-->
@@ -72,7 +70,7 @@
   </section>
 </template>
 <script>
-import {getCollateralList } from '../../api/pledgeInfo.js'
+import {getOtherRepayList} from '../../api/personalGuarantee.js'
 export default {
     data() {
 			return {
@@ -99,11 +97,11 @@ export default {
         total: 0,
         page: 1,
         listLoading: false,
-        collateralInfos:[]
+        contractMarks:[]
       }
     },
     methods:{
-      getCollateralInfos(){
+      getOtherRepays(){
         let para = {
 					page: this.page,
           name: this.filters.name,
@@ -114,9 +112,9 @@ export default {
         // setTimeout(()=>{
         //   this.listLoading = false;
         // },1000)
-        getCollateralList(para).then((res) => {
+        getOtherRepayList(para).then((res) => {
 					this.total = res.data.total;
-					this.collateralInfos = res.data.collateralInfos;
+					this.contractMarks = res.data.otherRepays;
 					this.listLoading = false;
 					//NProgress.done();
 				});
@@ -124,14 +122,14 @@ export default {
       },
       handleCurrentChange(val) {
 				this.page = val;
-				this.getCollateralInfos();
+				this.getOtherRepays();
 			},
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }
     },
     mounted() {
-			this.getCollateralInfos();
+			this.getOtherRepays();
 		}
 
 }
@@ -139,5 +137,6 @@ export default {
 <style>
   
 </style>
+
 
 
