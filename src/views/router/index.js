@@ -26,7 +26,15 @@ import BasicInfo from '../pledgeInfo/basicInfo.vue'
 import CollateralInfo from '../pledgeInfo/collateralInfo.vue'
 import ContractMark from '../pledgeInfo/contractMark.vue'
 import MatterInfo from '../pledgeInfo/matterInfo.vue'
-import OtherDebt from '../pledgeInfo/otherDebt.vue'
+import OtherDebt from '../pledgeInfo/otherDebt.vue' 
+import PersonBasis from '../personalGuarantee/personBasis.vue' 
+import PerBasiInfos from '../personalGuarantee/perBasiInfos.vue'
+import OtherRepayment from '../personalGuarantee/otherRepayment.vue'
+import PercollateralInfo from '../personalGuarantee/percollateralInfo.vue'
+import Person from '../personalGuarantee/Person.vue'
+import CreditBasic from '../creditInfo/creditBasic.vue'
+import AllCredit from '../creditInfo/allCredit.vue'
+
 
 Vue.use(VueRouter)
 
@@ -79,6 +87,32 @@ let routes = [
     },
     {
         path: '/',
+        component: Home, 
+        name: '个人担保账户信息记录',
+        iconCls: 'fa fa-address-card',
+        leaf: false,//只有一个节点
+        children: [
+            { path: '/personBasis', component: PersonBasis, name: '基础信息' },
+            { path: '/perBasiInfos', component: PerBasiInfos, name: '基本信息' },
+            { path: '/otherRepayment', component: OtherRepayment, name: '相关还款责任人信息' },
+            { path: '/percollateralInfo', component: PercollateralInfo, name: '抵质押物信息' },
+            { path: '/person', component: Person, name: '在保责任信息' }
+        ]
+    },
+    {
+        path: '/',
+        component: Home, 
+        name: '企业授信协议信息记录',
+        iconCls: 'fa fa-address-card',
+        leaf: false,//只有一个节点
+        children: [
+            { path: '/creditBasic', component: CreditBasic, name: '基础信息' },
+            { path: '/allCredit', component: AllCredit, name: '共同授信人信息' },
+            { path: '/otherRepayment', component: OtherRepayment, name: '额度信息' }
+        ]
+    },
+    {
+        path: '/',
         component: Home,
         name: '采集数据查询 ',
         iconCls: 'fa fa-address-card',
@@ -122,33 +156,33 @@ let routes = [
             { path: '/jsdata', component: Jsdata, name: '角色管理' }
         ]
     },
-    {
-        path: '/',
-        component: Home,
-        name: '导航',
-        iconCls: 'el-icon-message',//图标样式classt
-        children: [
-            { path: '/main', component: Main, name: '主页', hidden:  false},
-            { path: '/table', component: Table, name: '人员管理' },
-            { path: '/form', component: Form, name: 'Form' },
-            { path: '/user', component: user, name: '列表' },
-        ]
-    },
-    {
-        path: '/',
-        component: Home,
-        name: '导航二',
-        iconCls: 'fa fa-id-card-o',
-        children: [
-            { path: '/page4', component: Page4, name: '页面4' },
-            { path: '/page5', component: Page5, name: '页面5' }
-        ]
-    },
-    {
-        path: '*',
-        hidden: true,
-        redirect: { path: '/404' }
-    }
+    // {
+    //     path: '/',
+    //     component: Home,
+    //     name: '导航',
+    //     iconCls: 'el-icon-message',//图标样式classt
+    //     children: [
+    //         { path: '/main', component: Main, name: '主页', hidden:  false},
+    //         { path: '/table', component: Table, name: '人员管理' },
+    //         { path: '/form', component: Form, name: 'Form' },
+    //         { path: '/user', component: user, name: '列表' },
+    //     ]
+    // },
+    // {
+    //     path: '/',
+    //     component: Home,
+    //     name: '导航二',
+    //     iconCls: 'fa fa-id-card-o',
+    //     children: [
+    //         { path: '/page4', component: Page4, name: '页面4' },
+    //         { path: '/page5', component: Page5, name: '页面5' }
+    //     ]
+    // },
+    // {
+    //     path: '*',
+    //     hidden: true,
+    //     redirect: { path: '/404' }
+    // }
 ];
 
 let router =  new VueRouter({

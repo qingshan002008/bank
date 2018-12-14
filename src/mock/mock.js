@@ -6,6 +6,11 @@ import {Contracts} from './data/contracts'
 import {BasicInfos} from './data/basicInfos'
 import {CollateralInfos} from './data/collateralInfos'
 
+import {PersonBasics} from  './data/personBasics'
+import {PerBasicInfos} from  './data/perBasciInfo'
+
+import {Person} from './data/person'
+  
 let _Users = Users;
 
 let _Message = Message;
@@ -16,6 +21,9 @@ let _BasicInfos = BasicInfos;
 
 let _CollateralInfos = CollateralInfos;
 
+let _PersonBasics = PersonBasics ;
+let _PerBasicInfos = PerBasicInfos ;
+let _Person = Person ;
 export default {
   /**
    * mock bootstrap
@@ -165,9 +173,9 @@ export default {
 
 // 通知公告开始
 mock.onGet('/message/listpage').reply(config => {
-  let {page, title} = config.params;
+  let {page, name} = config.params;
   let mockMessages = _Message.filter(message => {
-    if (title && message.title.indexOf(title) == -1) return false;
+    if (name && message.title.indexOf(name) == -1) return false;
     return true;
   });
   let total = mockMessages.length;
@@ -187,9 +195,11 @@ mock.onGet('/message/listpage').reply(config => {
 //通知公告结束
 // 抵质押合同基础段信息查询开始
 mock.onGet('/pledgeInfo/contractList').reply(config => {
-  let {page, name} = config.params;
+  let {page, name,cardType ,cardNo} = config.params;
   let mockContracts = _Contracts.filter(contracts => {
-    if (name && contracts.name.indexOf(name) == -1) return false;
+    if (name && contracts.name.indexOf(name) == -1) {return false;}
+    if (cardType && contracts.cardType.indexOf(cardType) == -1) {return false;}
+    if (cardNo && contracts.cardNo.indexOf(cardNo) == -1) {return false;}
     return true;
   });
   let total = mockContracts.length;
@@ -226,9 +236,11 @@ mock.onGet('/pledgeInfo/basicInfoList').reply(config => {
   });
 });
 mock.onGet('/pledgeInfo/collateralList').reply(config => {
-  let {page, name} = config.params;
+  let {page, name,cardType ,cardNo} = config.params;
   let mockCollateralInfos = _CollateralInfos.filter(collateralInfo => {
-    if (name && collateralInfo.name.indexOf(name) == -1) return false;
+    if (name && collateralInfo.name.indexOf(name) == -1) {return false;}
+    if (cardType && collateralInfo.cardType.indexOf(cardType) == -1) {return false;}
+    if (cardNo && collateralInfo.cardNo.indexOf(cardNo) == -1) {return false;}
     return true;
   });
   let total = mockCollateralInfos.length;
@@ -243,5 +255,87 @@ mock.onGet('/pledgeInfo/collateralList').reply(config => {
   });
 });
 //抵质押合同基础段信息查询结束
+
+// 个人担保信息查询开始
+mock.onGet('/personalGuarantee/personBasicList').reply(config => {
+  let {page, name,cardType ,cardNo} = config.params;
+  let mockPersonBasics = _PersonBasics.filter(contracts => {
+    if (name && contracts.name.indexOf(name) == -1) { return false; }
+    if (cardType && contracts.cardType.indexOf(cardType) == -1) { return false; }
+    if (cardNo && contracts.cardNo.indexOf(cardNo) == -1) { return false; }
+    return true;
+  });
+  let total = mockPersonBasics.length;
+  mockPersonBasics = mockPersonBasics.filter((c, index) => index < 10 * page && index >= 10 * (page - 1));
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([200, {
+        total: total,
+        personBasics: mockPersonBasics
+      }]);
+    }, 1000);
+  });
+});
+
+mock.onGet('/personalGuarantee/perBasicInfoList').reply(config => {
+  let {page, startDate,endDate} = config.params;
+  let mockPerBasicInfos = _PerBasicInfos.filter(basicInfos => {
+    if (startDate && basicInfos.startDate < startDate  ) {
+      return false;
+    }
+    if (endDate && basicInfos.endDate > endDate  ) {
+      return false;
+    } 
+      return true;
+  });
+  let total = mockPerBasicInfos.length;
+  mockPerBasicInfos = mockPerBasicInfos.filter((c, index) => index < 10 * page && index >= 10 * (page - 1));
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([200, {
+        total: total,
+        perBasicInfos: mockPerBasicInfos
+      }]);
+    }, 1000);
+  });
+});
+mock.onGet('/personalGuarantee/otherRepayList').reply(config => {
+  let {page, name,cardType,cardNo} = config.params;
+  let mockCollateralInfos = _CollateralInfos.filter(collateralInfo => {
+    if (name && collateralInfo.name.indexOf(name) == -1) {return false;}
+    if (cardType && collateralInfo.cardType.indexOf(cardType) == -1) {return false;}
+    if (cardNo && collateralInfo.cardNo.indexOf(cardNo) == -1) {return false;}
+    return true;
+  });
+  let total = mockCollateralInfos.length;
+  mockCollateralInfos = mockCollateralInfos.filter((c, index) => index < 10 * page && index >= 10 * (page - 1));
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([200, {
+        total: total,
+        otherRepays: mockCollateralInfos
+      }]);
+    }, 1000);
+  });
+});
+mock.onGet('/personalGuarantee/personsList').reply(config => {
+  let {page, accState,level} = config.params;
+  let mockPerson = _Person.filter(person => {
+    if (accState && person.accState.indexOf(accState) == -1){return false; } 
+    if (level && person.level.indexOf(level) == -1) {return false; }
+    return true;
+  });
+  let total = mockPerson.length;
+  mockPerson = mockPerson.filter((c, index) => index < 10 * page && index >= 10 * (page - 1));
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([200, {
+        total: total,
+        persons: mockPerson
+      }]);
+    }, 1000);
+  });
+});
+// 个人担保信息查询结束
   }
 };

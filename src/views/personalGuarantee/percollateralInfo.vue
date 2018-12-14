@@ -1,18 +1,18 @@
 <template>
-      <!-- 质物基本信息  -->
+      <!-- 抵押物基本信息  -->
   <section>
     	<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
         <el-form ref="collateralInfoForm" :model="filters" :inline="true"   >
           <table >
             <tr>
               <td>
-                <el-form-item label="出质人名称"  prop='name'>
-					        <el-input v-model="filters.name" placeholder="出质人名称"></el-input>
+                <el-form-item label="抵押人名称"  prop='name'>
+					        <el-input v-model="filters.name" placeholder="抵押人名称"></el-input>
 				        </el-form-item>
               </td>
                 <td>
-                <el-form-item label="出质人身份类型" prop='cardType'>
-                    <el-select v-model="filters.cardType" placeholder="出质人身份类型">
+                <el-form-item label="抵押人身份类型" prop='cardType'>
+                    <el-select v-model="filters.cardType" placeholder="抵押人身份类型">
                     <el-option
                       v-for="item in options"
                       :key="item.value"
@@ -23,8 +23,8 @@
                   </el-form-item>
               </td>
               <td>
-                <el-form-item label="出质人身份标示号码" prop='cardNo'>
-                    <el-input v-model="filters.cardNo" placeholder="出质人身份标示号码"></el-input>
+                <el-form-item label="抵押人身份标示号码" prop='cardNo'>
+                    <el-input v-model="filters.cardNo" placeholder="抵押人身份标示号码"></el-input>
                   </el-form-item>
               </td>
             </tr>
@@ -44,17 +44,27 @@
   <el-table :data="collateralInfos" highlight-current-row v-loading="listLoading"  style="width: 100%;"  stripe='true'>
       <!-- <el-table-column type="selection" width="55">
 			</el-table-column> -->
-      <el-table-column prop="collateralCount" label="质物个数" width="100" align="center">
+      <el-table-column  type="index"  :index="indexMethod" label="序号"     width="50">
+      </el-table-column>
+      <el-table-column prop="collateralCount" label="抵押物合同个数" width="100">
 			</el-table-column>
 			<el-table-column prop="contractNo" label="合同标示码" width="120" sortable>
 			</el-table-column>
-      <el-table-column prop="matterType" label="质物类型" width="120" sortable>
+      <el-table-column prop="collateralType" label="抵押物类型" width="120" sortable>
 			</el-table-column>
-      <el-table-column prop="moneyAll" label="质物估值" width="100" sortable>
+			<el-table-column prop="collateralNo" label="抵押物识别号" width="120"  sortable>
+			</el-table-column>
+      <el-table-column prop="addr" label="抵押物地址" width="100" sortable>
+			</el-table-column>
+      <el-table-column prop="moneyAll" label="抵押物估值" width="100" sortable>
+			</el-table-column>
+      <el-table-column prop="mechanism" label="评估类型" width="100" sortable>
+			</el-table-column>
+      <el-table-column prop="infoDate" label="评估日期" width="100" sortable>
 			</el-table-column>
 			<el-table-column prop="infoType" label="身份类型" width="120" sortable>
 			</el-table-column>
-			<el-table-column prop="name" label="质物人名称" min-width="100" sortable>
+			<el-table-column prop="name" label="抵押人名称" min-width="100" sortable>
 			</el-table-column>
       <el-table-column prop="cardType" label="证件类型" min-width="100" sortable>
 			</el-table-column>
@@ -128,6 +138,9 @@ export default {
 			},
       resetForm(formName) {
         this.$refs[formName].resetFields();
+      },
+      indexMethod(index){
+          return index + (this.page-1) * 10 + 1 ;
       }
     },
     mounted() {
