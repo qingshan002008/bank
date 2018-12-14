@@ -34,6 +34,7 @@ import PercollateralInfo from '../personalGuarantee/percollateralInfo.vue'
 import Person from '../personalGuarantee/Person.vue'
 import CreditBasic from '../creditInfo/creditBasic.vue'
 import AllCredit from '../creditInfo/allCredit.vue'
+import Quota from '../creditInfo/quota.vue'
 
 
 Vue.use(VueRouter)
@@ -108,13 +109,13 @@ let routes = [
         children: [
             { path: '/creditBasic', component: CreditBasic, name: '基础信息' },
             { path: '/allCredit', component: AllCredit, name: '共同授信人信息' },
-            { path: '/otherRepayment', component: OtherRepayment, name: '额度信息查询' }
+            { path: '/quota', component: Quota, name: '额度信息查询' }
         ]
     },
     {
         path: '/',
         component: Home,
-        name: '采集数据查询 ',
+        name: '采集数据查询',
         iconCls: 'fa fa-address-card',
         leaf: false,//只有一个节点
         children: [

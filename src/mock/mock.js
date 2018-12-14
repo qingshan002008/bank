@@ -12,13 +12,10 @@ import {PerBasicInfos} from  './data/perBasciInfo'
 import {Person} from './data/person'
   
 let _Users = Users;
-
 let _Message = Message;
 
 let _Contracts = Contracts ;
-
 let _BasicInfos = BasicInfos;
-
 let _CollateralInfos = CollateralInfos;
 
 let _PersonBasics = PersonBasics ;
