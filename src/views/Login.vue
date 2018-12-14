@@ -135,12 +135,13 @@
   }
   .login-logo{
     position: absolute;
-    width: 738px;
-    height:63px;
-    top:60px;
-    left:50%;
-    margin-left:-300px;
+    width: 756px;
+    height: 51px;
+    top: 80px;
+    left: 50%;
+    margin-left: -272px;
     background: url(../assets/logo.png) no-repeat;
+    background-size: 80%;
   }
   .login-copyrt{
     position: absolute;

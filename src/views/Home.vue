@@ -2,12 +2,13 @@
 	<el-row class="container">
 		<el-col :span="24" class="header">
 			<el-col :span="10" class="logo" :class="collapsed?'logo-collapse-width':'logo-width'">
-				{{collapsed?'':sysName}}
+				<!-- {{collapsed?'':sysName}} -->
 			</el-col>
 			<el-col :span="10">
 				<div class="tools" @click="collapse">
 					<i class="fa fa-align-justify"></i>
 				</div>
+				<span class="system-title">二代征信报送系统</span>
 			</el-col>
 			<el-col :span="4" class="userinfo">
 				<el-dropdown trigger="hover">
@@ -151,7 +152,11 @@
 		.header {
 			height: 60px;
 			line-height: 60px;
-			background: $color-primary;
+			/*background: $color-primary;*/
+			background: -webkit-linear-gradient(left, #cedbfd , #919cbd); /* Safari 5.1 - 6.0 */
+			background: -o-linear-gradient(right, #cedbfd , #919cbd); /* Opera 11.1 - 12.0 */
+			background: -moz-linear-gradient(right,#cedbfd , #919cbd); /* Firefox 3.6 - 15 */
+			background: linear-gradient(to right,#cedbfd , #919cbd); /* 标准的语法（必须放在最后） */
 			color:#fff;
 			.userinfo {
 				text-align: right;
@@ -178,6 +183,8 @@
 				border-color: rgba(238,241,146,0.3);
 				border-right-width: 1px;
 				border-right-style: solid;
+				background:url(../assets/logo1.png) no-repeat center center;
+				background-size: 70%; 
 				img {
 					width: 40px;
 					float: left;
@@ -191,9 +198,12 @@
 				width:230px;
 			}
 			.logo-collapse-width{
-				width:60px
+				width:60px;
+				background:url(../assets/logo_only.png) no-repeat center center;
+				background-size: 65%;
 			}
 			.tools{
+				display: inline-block;
 				padding: 0px 23px;
 				width:14px;
 				height: 60px;
@@ -216,6 +226,12 @@
 				// bottom: 0px;
 				.el-menu{
 					height: 100%;
+					background: #eaeffb;
+					li.el-submenu,.submenu li.el-menu-item{border-bottom: 1px dotted #9ca7c9;}
+					li.el-submenu .submenu{
+						-moz-box-shadow: 0px 0px 5px #aaa; /* 老的 Firefox */
+						box-shadow: 0px 0px 5px #aaa;
+					}
 				}
 				.collapsed{
 					width:60px;
@@ -229,6 +245,7 @@
 						z-index:99999;
 						height:auto;
 						display:none;
+						
 					}
 
 				}
@@ -236,10 +253,12 @@
 			.menu-collapsed{
 				flex:0 0 60px;
 				width: 60px;
+				
 			}
 			.menu-expanded{
 				flex:0 0 230px;
 				width: 230px;
+				
 			}
 			.content-container {
 				// background: #f1f2f7;
@@ -268,5 +287,12 @@
 				}
 			}
 		}
+	}
+	.system-title{
+		font-size: 27px;
+		color:#333;
+		font-weight: bold;
+		color: #32457c;
+
 	}
 </style>
