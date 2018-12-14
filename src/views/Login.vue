@@ -1,18 +1,23 @@
 <template>
-  <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
-    <h3 class="title">系统登录</h3>
-    <el-form-item prop="account">
-      <el-input type="text" v-model="ruleForm2.account" auto-complete="off" placeholder="账号"></el-input>
-    </el-form-item>
-    <el-form-item prop="checkPass">
-      <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="密码"></el-input>
-    </el-form-item>
-    <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
-    <el-form-item style="width:100%;">
-      <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit2" :loading="logining">登录</el-button>
-      <!--<el-button @click.native.prevent="handleReset2">重置</el-button>-->
-    </el-form-item>
-  </el-form>
+  <div class="login-wrap">
+    <div class="login-logo"></div>
+    <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
+      <h3 class="title">系统登录</h3>
+      <el-form-item prop="account">
+        <el-input type="text" v-model="ruleForm2.account" auto-complete="off" placeholder="账号"></el-input>
+      </el-form-item>
+      <el-form-item prop="checkPass">
+        <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="密码"></el-input>
+      </el-form-item>
+      <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
+      <el-form-item style="width:100%;">
+        <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit2" :loading="logining">登录</el-button>
+        <!--<el-button @click.native.prevent="handleReset2">重置</el-button>-->
+      </el-form-item>
+    </el-form>
+    <div class="login-copyrt">版权所有&nbsp;&copy;&nbsp;山东省农村信用社联合社</div>
+  </div>
+  
 </template>
 
 <script>
@@ -79,11 +84,16 @@
 <style lang="scss" scoped>
   .login-container {
     /*box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);*/
+    position: absolute;
+    top:55%;
+    left:50%;
+    margin-left:-175px;
+    margin-top:-170px;
+
     -webkit-border-radius: 5px;
     border-radius: 5px;
     -moz-border-radius: 5px;
     background-clip: padding-box;
-    margin: 180px auto;
     width: 350px;
     padding: 35px 35px 15px 35px;
     background: #fff;
@@ -97,5 +107,47 @@
     .remember {
       margin: 0px 0px 35px 0px;
     }
+  }
+  .login-wrap{
+    position: absolute;
+    width: 100%;
+    height:80%;
+    top:10%;
+    bottom: 10%;
+    background: -webkit-linear-gradient(#8c98b8 0%, #cedbfd 35%, #8e99ba 100%); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#8c98b8 0%, #cedbfd 35%, #8e99ba 100%); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#8c98b8 0%, #cedbfd 35%, #8e99ba 100%); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#8c98b8 0%, #cedbfd 35%, #8e99ba 100%); /* 标准的语法（必须放在最后） */
+  }
+  .input__inner{
+    border-color: #9a9a9a;
+  }
+  .el-button--primary{
+    background-color: #8aa0e3;
+    border:none;
+  }
+  .el-checkbox__inner{
+    background-color: #8aa0e3;
+    border-color: #8aa0e3;
+    }
+  .login-container[data-v-28d6ba78]{
+        border: 1px solid #8c98b8;
+  }
+  .login-logo{
+    position: absolute;
+    width: 738px;
+    height:63px;
+    top:60px;
+    left:50%;
+    margin-left:-300px;
+    background: url(../assets/logo.png) no-repeat;
+  }
+  .login-copyrt{
+    position: absolute;
+    bottom:-60px;
+    width: 100%;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
   }
 </style>
